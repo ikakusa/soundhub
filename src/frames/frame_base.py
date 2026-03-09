@@ -15,4 +15,4 @@ class FrameBase(ctk.CTkFrame, Widget):
 
 class SelectMicFrame(FrameBase):
     def setup(self):
-        self.add_label("label.current_mic", (0, 0), ctk.CTkLabel(master=self, text="現在のマイク: ", font=self.fonts))
+        self.add_label("label.current_mic", (0, 0), ctk.CTkLabel(master=self, text="現在のマイク: ", font=self.app_config.fonts))

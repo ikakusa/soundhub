@@ -13,22 +13,32 @@ class LabelHolder(TypedDict):
 class FrameHolder(TypedDict):
     id: "FrameBase"
 
+class ComboHolder(TypedDict):
+    id: ctk.CTkComboBox
+
 class Widget:
+    #grid: (row, column) 
     def __init__(self, app_config: AppConfig, controller: Controller):
         self.controller = controller
         self.app_config = app_config
         self.buttons: ButtonHolder = {}
         self.labels: LabelHolder = {}
         self.frames: FrameHolder = {}
+        self.combos: ComboHolder = {}
 
-    def add_button(self, id, grid, button):
+    #padding = (x, y)
+    def add_button(self, id, padding, grid, button, sticky=None):
         self.buttons[id] = button
-        button.grid(row=grid[0], column=grid[1])
+        button.grid(row=grid[0], column=grid[1], padx=padding[0], pady=padding[1], sticky=sticky)
 
-    def add_label(self, id, grid, label):
+    def add_label(self, id, grid, padding, label, sticky=None):
         self.labels[id] = label
-        label.grid(row=grid[0], column=grid[1])
+        label.grid(row=grid[0], column=grid[1], padx=padding[0], pady=padding[1], sticky=sticky)
 
-    def add_frame(self, id, grid, padding, frame):
+    def add_frame(self, id, grid, padding, frame, sticky=None):
         self.frames[id] = frame
-        frame.grid(row=grid[0], column=grid[1], padx=padding[0], pady=padding[1])
+        frame.grid(row=grid[0], column=grid[1], padx=padding[0], pady=padding[1], sticky=sticky)
+
+    def add_combobox(self, id, grid, padding, combo, sticky=None):
+        self.combos[id] = combo
+        combo.grid(row=grid[0], column=grid[1], padx=padding[0], pady=padding[1], sticky=sticky)
