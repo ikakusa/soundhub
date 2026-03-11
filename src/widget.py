@@ -16,6 +16,12 @@ class FrameHolder(TypedDict):
 class ComboHolder(TypedDict):
     id: ctk.CTkComboBox
 
+class SliderHolder(TypedDict):
+    id: ctk.CTkSlider
+
+class CheckBoxHolder(TypedDict):
+    id: ctk.CTkCheckBox
+
 class Widget:
     #grid: (row, column) 
     def __init__(self, app_config: AppConfig, controller: Controller):
@@ -25,6 +31,8 @@ class Widget:
         self.labels: LabelHolder = {}
         self.frames: FrameHolder = {}
         self.combos: ComboHolder = {}
+        self.sliders: SliderHolder = {}
+        self.checkboxes: CheckBoxHolder = {}
 
     #padding = (x, y)
     def add_button(self, id, padding, grid, button, sticky=None):
@@ -42,3 +50,11 @@ class Widget:
     def add_combobox(self, id, grid, padding, combo, sticky=None):
         self.combos[id] = combo
         combo.grid(row=grid[0], column=grid[1], padx=padding[0], pady=padding[1], sticky=sticky)
+
+    def add_checkbox(self, id, grid, padding, checkbox, sticky=None):
+        self.checkboxes[id] = checkbox
+        checkbox.grid(row=grid[0], column=grid[1], padx=padding[0], pady=padding[1], sticky=sticky)
+    
+    def add_slider(self, id, grid, padding, slider, sticky=None):
+        self.sliders[id] = slider
+        slider.grid(row=grid[0], column=grid[1], padx=padding[0], pady=padding[1], sticky=sticky)

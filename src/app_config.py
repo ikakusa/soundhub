@@ -5,3 +5,4 @@ class AppConfig:
         self.fonts = (self.font_name, self.font_size)
         self.appearance_mode = "dark"
         self.color_theme = "blue"
+        self.wrap_length = 270
